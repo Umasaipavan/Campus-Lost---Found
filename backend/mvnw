@@ -1,0 +1,9 @@
+@echo off
+set MAVEN_PROJECTBASEDIR=%~dp0
+nif exist "%MAVEN_PROJECTBASEDIR%.mvn\wrapper\maven-wrapper.properties" (
+  set MAVEN_WRAPPER_LAUNCHER=%MAVEN_PROJECTBASEDIR%.mvn\wrapper\maven-wrapper.jar
+  java -jar "%MAVEN_WRAPPER_LAUNCHER%" %*
+) else (
+  echo Maven wrapper properties not found.
+  exit /b 1
+)

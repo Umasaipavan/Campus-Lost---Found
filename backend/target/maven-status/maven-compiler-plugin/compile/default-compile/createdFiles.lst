@@ -1,0 +1,3 @@
+com\srkr\lostfound\LostFoundApplication.class
+com\srkr\lostfound\controller\HealthController.class
+com\srkr\lostfound\service\HealthService.class
