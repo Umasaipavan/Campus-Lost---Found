@@ -7,6 +7,7 @@ import BrowseItems from '../pages/BrowseItems';
 import PostItem from '../pages/PostItem';
 import ItemDetails from '../pages/ItemDetails';
 import AdminDashboard from '../pages/AdminDashboard';
+import About from '../pages/About';
 
 function AppRoutes() {
   return (
@@ -19,8 +20,10 @@ function AppRoutes() {
       <Route path="/post" element={<PostItem />} />
       <Route path="/items/:id" element={<ItemDetails />} />
       <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/about" element={<About />} />
     </Routes>
   );
 }
 
 export default AppRoutes;
+
