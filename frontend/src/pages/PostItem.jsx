@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 function PostItem() {
+  const { user } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     title: '',
     category: '',
@@ -28,6 +31,39 @@ function PostItem() {
   };
 
   const isLost = formData.status === 'LOST';
+
+  if (!user) {
+    return (
+      <main className="page-shell">
+        <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
+          <div style={{ textAlign: 'center', padding: '2.5rem 2.2rem', border: '1px solid #E2E8F0', borderRadius: '20px', boxShadow: '0 8px 30px rgba(0,0,0,0.05)', maxWidth: '420px', background: '#FFFFFF', width: '100%' }}>
+            <div style={{ 
+              width: '64px', height: '64px', borderRadius: '50%', background: '#EFF6FF', 
+              color: '#1D4ED8', display: 'flex', alignItems: 'center', justifyContent: 'center', 
+              margin: '0 auto 1.25rem' 
+            }}>
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h2 style={{ marginTop: 0, fontSize: '1.4rem', color: '#0F172A', fontWeight: 800 }}>Sign In Required</h2>
+            <p style={{ color: '#64748b', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.75rem', padding: '0 0.5rem' }}>
+              Please log in or create an account to report lost or found items on the campus network.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <Link className="button-primary-blue" to="/login" style={{ justifyContent: 'center', padding: '0.85rem 1rem', borderRadius: '12px' }}>
+                Sign In
+              </Link>
+              <Link className="button-secondary-white" to="/register" style={{ justifyContent: 'center', padding: '0.85rem 1rem', borderRadius: '12px', border: '1.5px solid #E2E8F0' }}>
+                Create Account
+              </Link>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="page-shell">

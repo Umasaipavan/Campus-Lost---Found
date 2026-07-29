@@ -15,13 +15,35 @@ function Register() {
       alert('Please fill in all fields');
       return;
     }
+
+    const emailLower = email.toLowerCase();
+
+    // Disallow registering with the admin email
+    if (emailLower === 'usp@gmail.com') {
+      alert('This email is reserved for administrative use.');
+      return;
+    }
+
+    // Save to localStorage registered users list
+    const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+    const userExists = registeredUsers.some(u => u.email.toLowerCase() === emailLower);
+
+    if (userExists) {
+      alert('An account with this email already exists! Please sign in.');
+      return;
+    }
+
+    registeredUsers.push({ name, email: emailLower, password });
+    localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
     // Set mock authenticated user
     setUser({
       name: name,
       email: email,
+      role: 'user',
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'
     });
-    navigate('/dashboard');
+    navigate('/');
   };
 
   return (

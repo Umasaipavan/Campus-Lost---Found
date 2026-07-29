@@ -99,15 +99,17 @@ function Navbar() {
                         <div className="user-info-email">{user.email}</div>
                       </div>
                       <div className="dropdown-divider"></div>
-                      <Link to="/dashboard" className="dropdown-item" onClick={() => setIsOpen(false)}>
-                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="3" y="3" width="7" height="9"></rect>
-                          <rect x="14" y="3" width="7" height="5"></rect>
-                          <rect x="14" y="12" width="7" height="9"></rect>
-                          <rect x="3" y="16" width="7" height="5"></rect>
-                        </svg>
-                        <span>Dashboard</span>
-                      </Link>
+                      {user.email === 'usp@gmail.com' && (
+                        <Link to="/dashboard" className="dropdown-item" onClick={() => setIsOpen(false)}>
+                          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="3" width="7" height="9"></rect>
+                            <rect x="14" y="3" width="7" height="5"></rect>
+                            <rect x="14" y="12" width="7" height="9"></rect>
+                            <rect x="3" y="16" width="7" height="5"></rect>
+                          </svg>
+                          <span>Admin Dashboard</span>
+                        </Link>
+                      )}
                       <Link to="/post" className="dropdown-item" onClick={() => setIsOpen(false)}>
                         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
