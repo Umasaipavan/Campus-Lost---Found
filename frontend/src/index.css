@@ -1424,3 +1424,25 @@ button, input, select, textarea {
   .auth-card { padding: 1.75rem 1.25rem; margin: 1.5rem auto; }
   .post-form-card { padding: 1.5rem; }
 }
+
+/* Demo credentials helper styling */
+.demo-credentials-box {
+  background: rgba(37, 99, 235, 0.05);
+  border: 1.5px dashed rgba(37, 99, 235, 0.25);
+  border-radius: 12px;
+  padding: 0.85rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.86rem;
+  color: #1E3A8A;
+  line-height: 1.55;
+}
+
+.demo-credentials-box code {
+  background: rgba(37, 99, 235, 0.09);
+  padding: 0.12rem 0.35rem;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.82rem;
+  color: #1D4ED8;
+  font-weight: 600;
+}
