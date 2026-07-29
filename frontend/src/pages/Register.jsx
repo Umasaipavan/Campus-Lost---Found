@@ -1,24 +1,64 @@
-import { Link } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function Register() {
+  const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name || !email || !password) {
+      alert('Please fill in all fields');
+      return;
+    }
+    // Set mock authenticated user
+    setUser({
+      name: name,
+      email: email,
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'
+    });
+    navigate('/dashboard');
+  };
+
   return (
     <main className="page-shell">
       <div className="container">
         <div className="auth-card">
           <h2 style={{ marginTop: 0 }}>Create your account</h2>
           <p style={{ color: '#64748b' }}>Join the campus community and start reporting lost or found items.</p>
-          <form className="form-grid">
+          <form className="form-grid" onSubmit={handleSubmit}>
             <div className="field">
               <label>Full Name</label>
-              <input placeholder="Aisha Khan" />
+              <input 
+                placeholder="Aisha Khan" 
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
             </div>
             <div className="field">
               <label>Email</label>
-              <input type="email" placeholder="you@campus.edu" />
+              <input 
+                type="email" 
+                placeholder="you@campus.edu" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
             </div>
             <div className="field">
               <label>Password</label>
-              <input type="password" placeholder="Create password" />
+              <input 
+                type="password" 
+                placeholder="Create password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
             <button className="button-primary" type="submit">Register</button>
           </form>
